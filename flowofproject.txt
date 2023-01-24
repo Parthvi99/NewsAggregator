@@ -1,0 +1,16 @@
+install all libraries by 'pip install -r requirements.txt' in cmd of the project's evnt
+first run 'runActiveMQ.py'
+parallelly run 'FlaskPage.py'
+
+1. we fetched the links using feedparser lib 
+2.we made connection with activemq using stomp.py
+3. now we will create a db1 which will store all the fetched links of step1
+4. also push all the links to activemq 
+note: we are creating db1 to avoid the duplication of links as we cannot check that in queue
+5.then we have to create a listener which will collect one link at a time from activemq (as queue uses push mechanism) and send to newspaper lib python file
+6. now make a python file using newspaper library which will fetch title,published date, article and author.(remember it will fetch for one link at a time only)
+7. now make db2 which will store all the fetched content from the step6
+
+so overall we have 2 applications :
+	 1: which fetches links from the newsurls using feedparser library  
+	 2: the newspaper library file which fetches the content from those links 
